@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3506914349538845059}
   - component: {fileID: 7762541288855195375}
-  - component: {fileID: 4956009363867180768}
+  - component: {fileID: 4745254938451688643}
   m_Layer: 0
   m_Name: PlayerInput
   m_TagString: Untagged
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4956009363867180768}
+      - m_Target: {fileID: 4745254938451688643}
         m_TargetAssemblyTypeName: BongoInput, Assembly-CSharp
         m_MethodName: OnLeftPressed
         m_Mode: 0
@@ -76,7 +76,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Left[/Keyboard/leftArrow]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4956009363867180768}
+      - m_Target: {fileID: 4745254938451688643}
         m_TargetAssemblyTypeName: BongoInput, Assembly-CSharp
         m_MethodName: OnRightPressed
         m_Mode: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Both[/Keyboard/leftArrow]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4956009363867180768}
+      - m_Target: {fileID: 4745254938451688643}
         m_TargetAssemblyTypeName: BongoInput, Assembly-CSharp
         m_MethodName: OnClapPressed
         m_Mode: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &4956009363867180768
+--- !u!114 &4745254938451688643
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

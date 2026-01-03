@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameTimer : MonoBehaviour
 {
     [SerializeField] SpriteRenderer TimerBar;
+    [SerializeField] AnimationCurve ElapseCurve;
     Coroutine timerRoutine;
     float startWidth;
 
@@ -26,7 +27,8 @@ public class GameTimer : MonoBehaviour
         while (Time.time < endTime)
         {
             var elapsed = 1 - Mathf.Clamp01((endTime - Time.time) / time);
-            TimerBar.size = new Vector2(Mathf.Lerp(startWidth, 0, elapsed), TimerBar.size.y);
+            elapsed = ElapseCurve.Evaluate(elapsed);
+            TimerBar.size = new Vector2(Mathf.Max(0, startWidth * (1 - elapsed)), TimerBar.size.y);
             yield return null;
         }
         

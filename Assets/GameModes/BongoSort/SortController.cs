@@ -12,7 +12,7 @@ public class SortController : MonoBehaviour
     private int selection;
     private BongoInput input;
 
-    private float BarWidth => BarSizeInPixels.x * 0.01f;
+    float BarWidth => BarSizeInPixels.x * Constants.PixelToUnit;
 
     private void Start()
     {
@@ -23,7 +23,9 @@ public class SortController : MonoBehaviour
             var barObject = Instantiate(BarPrefab, transform);
             barObject.transform.position = GetBarPosition(i);
             var bar = barObject.GetComponent<Bar>();
-            bar.SetHeight(0.2f + (float)numbers[i] / Randomizer.NumberOfBars * 0.8f);
+            bar.Number = numbers[i];
+            var height = 0.2f + (float)numbers[i] / Randomizer.NumberOfBars * 0.8f;
+            bar.SetHeight(height * Constants.PixelToUnit * BarSizeInPixels.y);
             bars.Add(bar);
         }
         
@@ -42,6 +44,9 @@ public class SortController : MonoBehaviour
 
     private void OnDestroy()
     {
+        if(!input)
+            return;
+        
         input.LeftPressed -= MoveLeft;
         input.RightPressed -= MoveRight;
         input.ClapPressed -= Selection;
@@ -69,6 +74,22 @@ public class SortController : MonoBehaviour
                 bars[selection].Select();
             }
         }
+
+        if(AreBarsCorrectlySorted())
+            Debug.Log("VICTORY!");
+    }
+
+    bool AreBarsCorrectlySorted()
+    {
+        var last = bars[0].Number - 1;
+        foreach(var bar in bars)
+        {
+            if(bar.Number != last + 1)
+                return false;
+            last += 1;
+        }
+
+        return true;
     }
 
     private void Selection()

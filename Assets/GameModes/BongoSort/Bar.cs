@@ -16,6 +16,8 @@ public class Bar : ValidatedMonoBehaviour
         set => transform.position = value;
     }
 
+    public int Number { get; set; }
+
     public void Select()
     {
         IsMoveActive = false;
@@ -32,7 +34,7 @@ public class Bar : ValidatedMonoBehaviour
     {
         IsMoveActive = true;
         SpriteRenderer.sprite = Move;
-        SpriteRenderer.transform.localPosition = new Vector3(0, -0.01f, 0);
+        SpriteRenderer.transform.localPosition = new Vector3(0, -0.05f, 0);
     }
 
     public void SetHeight(float height)
